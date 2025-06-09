@@ -1,9 +1,15 @@
 import ChatPromptBox from "./components/ChatPromptBox";
+import AnimatedTitle from "./components/AnimatedTitle";
 
 function App() {
   return (
-    <div className="bg-gradient-to-br from-purple-900 via-purple-600 to-purple-800">
-      <ChatPromptBox />
+    <div className="bg-gradient-to-br from-purple-950 to-purple-900">
+      <div className="h-screen flex-center flex-col">
+        <AnimatedTitle className={"mb-10 sm:mb-20 "}>
+          Welcome To AI Playground!
+        </AnimatedTitle>
+        <ChatPromptBox />
+      </div>
     </div>
   );
 }
