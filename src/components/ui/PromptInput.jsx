@@ -3,11 +3,13 @@ import { sendIcon } from "../../assets/icons/send";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { promptScheme } from "../../zod/schemas/promptScheme";
+import { clearIcon } from "../../assets/icons/clear";
 
 export const PromptInput = ({ setResponse, setLoading, setError }) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({ resolver: zodResolver(promptScheme) });
 
@@ -41,8 +43,14 @@ export const PromptInput = ({ setResponse, setLoading, setError }) => {
               type="text"
               autoComplete="off"
               placeholder="Enter your prompt..."
-              className="text-white-50 py-4 pl-5 pr-5 md:pr-20 text-lg md:text-xl outline-none placeholder:text-white-50 w-full"
+              className="text-white-50 py-4 pl-5 pr-5 md:pr-28 text-lg md:text-xl outline-none placeholder:text-white-50 w-full"
             />
+            <button
+              className="cursor-pointer absolute top-0 bottom-0 right-20"
+              onClick={() => setValue("prompt", "")}
+            >
+              {clearIcon}
+            </button>
             <button className="absolute top-0 right-0 bottom-0 bg-blue-500/70 hover:bg-blue-700/70 transition duration-300 text-white px-5 cursor-pointer border-l-2 border-gray-800 hidden sm:block">
               {sendIcon}
             </button>
