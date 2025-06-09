@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { huggingFaceService } from "../services/api/huggingFaceService";
 import { sendIcon } from "../assets/icons/send";
+import { Spinner } from "./utils/Spinner";
 
 const ChatPromptBox = () => {
   const [response, setResponse] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [prompt, setPrompt] = useState("");
   const [error, setError] = useState(null);
 
   const sendRequest = async () => {
     try {
-      console.log("Request sent");
       setLoading(true);
-      const response = await huggingFaceService.chatCompletion(prompt);
-      console.log(response);
+      const response = await huggingFaceService.getResponse(prompt);
       setResponse(response);
     } catch (error) {
       setError(error);
@@ -43,7 +42,21 @@ const ChatPromptBox = () => {
         </div>
 
         <div className="border-2 p-5 rounded-md bg-white w-full h-[250px] overflow-y-auto font-medium text-lg md:text-xl">
-          {loading ? <div>Loading...</div> : <div>{response}</div>}
+          {loading ? (
+            <div className="w-full h-full flex-center">
+              <div>
+                <Spinner />
+              </div>
+            </div>
+          ) : error ? (
+            <div className="text-red-500 font-bold text-lg">
+              An error occured. Please try again
+            </div>
+          ) : response === "" ? (
+            <p>Please send your request</p>
+          ) : (
+            <p>{response}</p>
+          )}
         </div>
       </div>
     </div>

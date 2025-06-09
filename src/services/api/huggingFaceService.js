@@ -1,4 +1,4 @@
-import { chatCompletion, InferenceClient } from "@huggingface/inference";
+import { InferenceClient } from "@huggingface/inference";
 
 const client = new InferenceClient(import.meta.env.VITE_HF_TOKEN);
 
@@ -8,7 +8,7 @@ const cleanResponse = (rawResponse) => {
 };
 
 export const huggingFaceService = {
-  chatCompletion: async (prompt) => {
+  getResponse: async (prompt) => {
     try {
       const response = await client.chatCompletion({
         provider: "nebius",
