@@ -9,6 +9,7 @@ const AnimatedTitle = ({ className, children }) => {
       opacity: 0,
       x: -100,
       duration: 1,
+      ease: "power2.out",
     });
   });
   return (

@@ -1,5 +1,5 @@
-import ChatPromptBox from "./components/ChatPromptBox";
-import AnimatedTitle from "./components/AnimatedTitle";
+import ChatPromptBox from "./components/ui/ChatPromptBox";
+import AnimatedTitle from "./components/ui/AnimatedTitle";
 
 function App() {
   return (
