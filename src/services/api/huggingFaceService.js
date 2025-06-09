@@ -8,7 +8,7 @@ const cleanResponse = (rawResponse) => {
 };
 
 export const huggingFaceService = {
-  chatCompletion: async () => {
+  chatCompletion: async (prompt) => {
     try {
       const response = await client.chatCompletion({
         provider: "nebius",
@@ -16,7 +16,7 @@ export const huggingFaceService = {
         messages: [
           {
             role: "user",
-            content: "What is the capital of France?",
+            content: prompt,
           },
         ],
       });
