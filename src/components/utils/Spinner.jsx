@@ -2,8 +2,8 @@ export const Spinner = () => {
   return (
     <div role="status">
       <svg
-        ariaHidden="true"
-        class="w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+        aria-hidden="true"
+        className="w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ export const Spinner = () => {
           fill="currentFill"
         />
       </svg>
-      <span class="sr-only">Loading...</span>
+      <span className="sr-only">Loading...</span>
     </div>
   );
 };

@@ -22,7 +22,6 @@ export const huggingFaceService = {
       });
       return cleanResponse(response.choices[0].message);
     } catch (error) {
-      console.log("Помилка: error");
       throw error;
     }
   },
