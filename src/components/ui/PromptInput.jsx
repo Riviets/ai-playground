@@ -23,8 +23,6 @@ export const PromptInput = ({ aiModel, setResponse, setLoading, setError }) => {
       if (aiModel === "Sarvam") {
         response = await huggingFaceService.getSarvamResponse(data.prompt);
       }
-      console.log(response);
-
       setResponse(response);
     } catch (error) {
       setError(error);
@@ -59,7 +57,7 @@ export const PromptInput = ({ aiModel, setResponse, setLoading, setError }) => {
             >
               {clearIcon}
             </button>
-            <button className="absolute top-0 right-0 bottom-0 bg-blue-500/70 hover:bg-blue-700/70 transition duration-300 text-white px-5 cursor-pointer border-l-2 border-gray-800 hidden sm:block">
+            <button className="absolute top-0 right-0 bottom-0 rounded-r-sm bg-blue-500/70 hover:bg-blue-700/70 transition duration-300 text-white px-5 cursor-pointer border-l-2 border-gray-800 hidden sm:block">
               {sendIcon}
             </button>
           </div>

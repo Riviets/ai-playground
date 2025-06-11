@@ -8,7 +8,7 @@ const DropdownList = ({ aiModel, setAiModel }) => {
         <select
           value={aiModel}
           onChange={() => setAiModel(event.target.value)}
-          className="mb-5 text-white text-lg md:text-xl py-4 bg-purple-800/70 border-2 border-gray-800 rounded-md px-5 appearance-none w-full"
+          className="mb-5 text-white text-lg md:text-xl py-4 bg-purple-800/70 border-2 border-gray-800 rounded-md px-5 appearance-none w-full cursor-pointer"
         >
           <option value="DeepSeek">DeepSeek</option>
           <option value="Sarvam">Sarvam</option>

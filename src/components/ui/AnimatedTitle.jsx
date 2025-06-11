@@ -15,7 +15,7 @@ const AnimatedTitle = ({ className, children }) => {
   return (
     <p
       ref={titleRef}
-      className={`${className} text-3xl sm:text-5xl font-bold bg-gradient-to-br from-purple-400 to-pink-400 bg-clip-text text-transparent text-center cursor-default`}
+      className={`${className} text-3xl sm:text-5xl font-bold bg-gradient-to-br from-purple-400 to-pink-400 bg-clip-text text-transparent text-center cursor-default mb-10 sm:mb-15`}
     >
       {children}
     </p>

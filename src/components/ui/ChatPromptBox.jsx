@@ -13,7 +13,7 @@ const ChatPromptBox = () => {
   const timer = useTimer(loading);
 
   return (
-    <div className="w-full max-w-[85%] md:max-w-[70%] lg:max-w-[50%] flex flex-col">
+    <div className="w-full max-w-[85%] md:max-w-[70%] lg:max-w-[50%] flex flex-col py-10">
       <PromptInput
         aiModel={aiModel}
         setResponse={setResponse}
