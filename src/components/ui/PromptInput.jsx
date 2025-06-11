@@ -5,7 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { promptScheme } from "../../zod/schemas/promptScheme";
 import { clearIcon } from "../../assets/icons/clear";
 
-export const PromptInput = ({ setResponse, setLoading, setError }) => {
+export const PromptInput = ({ aiModel, setResponse, setLoading, setError }) => {
   const {
     register,
     handleSubmit,
@@ -16,7 +16,15 @@ export const PromptInput = ({ setResponse, setLoading, setError }) => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const response = await huggingFaceService.getResponse(data.prompt);
+      let response = null;
+      if (aiModel === "DeepSeek") {
+        response = await huggingFaceService.getDeepSeekResponse(data.prompt);
+      }
+      if (aiModel === "Sarvam") {
+        response = await huggingFaceService.getSarvamResponse(data.prompt);
+      }
+      console.log(response);
+
       setResponse(response);
     } catch (error) {
       setError(error);
@@ -43,10 +51,10 @@ export const PromptInput = ({ setResponse, setLoading, setError }) => {
               type="text"
               autoComplete="off"
               placeholder="Enter your prompt..."
-              className="text-white-50 py-4 pl-5 pr-5 md:pr-28 text-lg md:text-xl outline-none placeholder:text-white-50 w-full"
+              className="text-white-50 py-4 pl-5 pr-15 md:pr-28 text-lg md:text-xl outline-none placeholder:text-white-50 w-full"
             />
             <button
-              className="cursor-pointer absolute top-0 bottom-0 right-20"
+              className="cursor-pointer absolute top-0 bottom-0 right-7 sm:right-20"
               onClick={() => setValue("prompt", "")}
             >
               {clearIcon}

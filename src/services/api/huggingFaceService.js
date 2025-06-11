@@ -4,11 +4,11 @@ const client = new InferenceClient(import.meta.env.VITE_HF_TOKEN);
 
 const cleanResponse = (rawResponse) => {
   const text = rawResponse.content;
-  return text.replace(/<think>[\s\S]*?<\/think>/, "").trim();
+  return text.replace(/^[\s\S]*?<\/think>/, "").trim();
 };
 
 export const huggingFaceService = {
-  getResponse: async (prompt) => {
+  getDeepSeekResponse: async (prompt) => {
     try {
       const response = await client.chatCompletion({
         provider: "nebius",
@@ -20,6 +20,24 @@ export const huggingFaceService = {
           },
         ],
       });
+      return cleanResponse(response.choices[0].message);
+    } catch (error) {
+      throw error;
+    }
+  },
+  getSarvamResponse: async (prompt) => {
+    try {
+      const response = await client.chatCompletion({
+        provider: "hf-inference",
+        model: "sarvamai/sarvam-m",
+        messages: [
+          {
+            role: "user",
+            content: prompt,
+          },
+        ],
+      });
+
       return cleanResponse(response.choices[0].message);
     } catch (error) {
       throw error;

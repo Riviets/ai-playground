@@ -3,7 +3,7 @@ import AnimatedTitle from "./components/ui/AnimatedTitle";
 
 function App() {
   return (
-    <div className="bg-gradient-to-br from-purple-950 to-purple-900">
+    <div className="bg-gradient-to-br from-purple-950 via-purple-800 to-purple-900">
       <div className="h-screen flex-center flex-col">
         <AnimatedTitle className={"mb-10 sm:mb-20 "}>
           Welcome To AI Playground!
